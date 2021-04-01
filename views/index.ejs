@@ -12,7 +12,7 @@
     <h1>Nicknames</h1>
     <ul class="nicknames">
     <% for(let i=0; i < info.length; i++) {%>
-        <li class="rapper">
+        <li class="nickname">
             <span><%= info[i].nickName %></span>
             <span><%= info[i].birthName %></span>
             <span><%= info[i].likes %></span>
@@ -25,7 +25,7 @@
     <h2>Add A Nickname:</h2>
 
     <form action="/addName" method="POST">
-        <input type="text" placeholder="Stage Name" name="nickName">
+        <input type="text" placeholder="nickName" name="nickName">
         <input type="text" placeholder="Birth Name" name="birthName">
         <input type="submit">
     </form>

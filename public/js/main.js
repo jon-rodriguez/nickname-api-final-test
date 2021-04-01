@@ -1,4 +1,4 @@
-const delete = document.querySelectorAll('.fa-trash')
+const deleteText = document.querySelectorAll('.fa-trash')
 const thumbText = document.querySelectorAll('.fa-thumbs-up')
 
 Array.from(deleteText).forEach((element) => {
@@ -13,9 +13,9 @@ async function deleteName(){
   const bName = this.parentNode.childNodes[3].innerText
   try{
     const res = await fetch('deleteName', {
-      method: 'delete'
+      method: 'delete',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringfy({
+      body: JSON.stringify({
         'nickNameX': nName,
         'birthNameX': bName
       })
@@ -34,10 +34,10 @@ async function addLike(){
   const tLikes = Number(this.parentNode.childNodes[5].innerText)
 
   try{
-    const res = await fetch('addLike', {
+    const res = await fetch('addOneLike', {
       method: 'put',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringfy({
+      body: JSON.stringify({
         'nickNameX': nName,
         'birthNameX': bName,
         'likesX': tLikes

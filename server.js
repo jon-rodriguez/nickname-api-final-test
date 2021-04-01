@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const cors = require('cors')
 const MongoClient = require('mongodb').MongoClient
 const PORT = 8000
 require('dotenv').config()
@@ -30,7 +29,7 @@ app.get('/', (req, res) => {
 
 app.post('/addName', (req, res) => {
   db.collection('nicknames').insertOne({nickName: req.body.nickName,
-    birthName: req.body.birthName, likes:0})
+    birthName: req.body.birthName, likes: 0})
   .then(result => {
     console.log('Nickname Added')
     res.redirect('/')
@@ -38,17 +37,17 @@ app.post('/addName', (req, res) => {
   .catch(error => console.log(error))
 })
 
-app.put('/addLike', (req, res) => {
-  db.collection('nicknames').updateOne({nickName: req.body.nickNameX, birthName: req.body.birthNameX,likes: req.body.likesX},{
+app.put('/addOneLike', (req, res) => {
+  db.collection('nicknames').updateOne({nickName: req.body.nickNameX, birthName: req.body.birthNameX, likes: req.body.likesX},{
     $set: {
-      likes:req.body.likesX +1
+      likes:req.body.likesX + 1
     }
   },{
     sort: {_id: -1},
     upsert: true
   })
   .then(result => {
-    console.log('Like Added')
+    console.log('Added One Like')
     res.json('Like Added')
   })
   .catch(error => console.erorr(error))
